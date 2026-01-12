@@ -29,18 +29,18 @@ A Claude Code plugin marketplace with full-stack development skills for modern w
 
 Complete full-stack development toolkit with 10 specialized skills:
 
-| Skill                           | Description                                            |
-| ------------------------------- | ------------------------------------------------------ |
-| `ivosantiago-nextjs-frontend`   | App Router, Server/Client Components, routing, layouts |
-| `ivosantiago-nextjs-backend`    | API Routes, Server Actions, middleware                 |
-| `ivosantiago-typescript`        | Type patterns, generics, Zod integration               |
-| `ivosantiago-drizzle-postgres`  | Schema definitions, queries, migrations, relations     |
-| `ivosantiago-better-auth`       | Authentication flows, sessions, OAuth providers        |
-| `ivosantiago-tailwind`          | Utility classes, responsive design, dark mode          |
-| `ivosantiago-shadcn-ui`         | Component usage, forms, theming                        |
-| `ivosantiago-architecture`      | Feature-scoped structure, patterns, best practices     |
-| `ivosantiago-security`          | Input validation, auth security, OWASP practices       |
-| `ivosantiago-vercel`            | Deployment, edge functions, caching strategies         |
+| Skill                          | Description                                            |
+| ------------------------------ | ------------------------------------------------------ |
+| `ivosantiago-nextjs-frontend`  | App Router, Server/Client Components, routing, layouts |
+| `ivosantiago-nextjs-backend`   | API Routes, Server Actions, middleware                 |
+| `ivosantiago-typescript`       | Type patterns, generics, Zod integration               |
+| `ivosantiago-drizzle-postgres` | Schema definitions, queries, migrations, relations     |
+| `ivosantiago-better-auth`      | Authentication flows, sessions, OAuth providers        |
+| `ivosantiago-tailwind`         | Utility classes, responsive design, dark mode          |
+| `ivosantiago-shadcn-ui`        | Component usage, forms, theming                        |
+| `ivosantiago-architecture`     | Feature-scoped structure, patterns, best practices     |
+| `ivosantiago-security`         | Input validation, auth security, OWASP practices       |
+| `ivosantiago-vercel`           | Deployment, edge functions, caching strategies         |
 
 **Slash Command**: `/ivosantiago-stack` — Invoke all skills at once
 
@@ -111,11 +111,13 @@ Claude will automatically use relevant skills:
 ```
 How do I set up Drizzle migrations?
 ```
+
 → Uses `ivosantiago-drizzle-postgres`
 
 ```
 Create a login form with email/password
 ```
+
 → Uses `ivosantiago-better-auth` + `ivosantiago-shadcn-ui`
 
 ## Project Structure (Feature-Scoped)

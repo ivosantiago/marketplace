@@ -26,7 +26,7 @@ src/
 ├── app/                         # Routes only - minimal logic
 │   └── (group)/route/          # Import from features, render UI
 │
-├── components/ui/               # Shared UI primitives (Button, Dialog, etc.)
+├── components/ui/               # shadcn/ui components ONLY (do not modify or add custom components here)
 ├── lib/                         # Shared utilities (auth, db client, helpers)
 └── db/                          # Database schema and client
 ```
@@ -37,6 +37,8 @@ src/
 2. **Features are self-contained** - All related code lives together (actions + schemas + components)
 3. **Shared code is explicit** - Only truly reusable code goes in `components/ui/` or `lib/`
 4. **Server Actions colocate with features** - Not with routes
+5. **Compose on top of shadcn/ui** - Instead of modifying shadcn components, compose your components on top of them while following shadcn's architecture guidelines (using `cn()` utility, CSS variables, same styling patterns). Keep `components/ui/` pristine for shadcn components only to maintain compatibility with tools like [tweakcn.com](https://tweakcn.com/)
+6. **Feature components follow shadcn architecture** - When creating new components in feature directories, follow shadcn's patterns: use Tailwind CSS theme variables (e.g., `bg-background`, `text-foreground`, `border-border`), the `cn()` utility for className merging, and the same component structure conventions
 
 ### File Naming Conventions
 
@@ -299,3 +301,5 @@ export const env = envSchema.parse(process.env);
 6. **Environment Validation** - Validate env vars at startup
 7. **Type Safety** - End-to-end types from DB to UI
 8. **Explicit Sharing** - Only move code to shared locations when actually reused
+9. **Compose on shadcn, Don't Modify** - Build components by composing on top of shadcn primitives in feature directories. Never modify `components/ui/` files. Follow shadcn's architecture (CSS variables, `cn()` utility, styling patterns) to maintain compatibility with ecosystem tools like [tweakcn.com](https://tweakcn.com/)
+10. **Follow shadcn Architecture Patterns** - Use Tailwind CSS theme variables (`bg-background`, `text-foreground`, `border-border`, etc.), the `cn()` utility for className merging, and shadcn's component structure conventions in all composed components

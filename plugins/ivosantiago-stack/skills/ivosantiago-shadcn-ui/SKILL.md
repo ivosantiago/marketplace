@@ -25,6 +25,7 @@ npx shadcn@latest add dialog
 ## Core Components
 
 ### Button
+
 ```tsx
 import { Button } from "@/components/ui/button"
 
@@ -42,8 +43,16 @@ import { Button } from "@/components/ui/button"
 ```
 
 ### Card
+
 ```tsx
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 <Card>
   <CardHeader>
@@ -56,12 +65,21 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
   <CardFooter>
     <Button>Action</Button>
   </CardFooter>
-</Card>
+</Card>;
 ```
 
 ### Dialog
+
 ```tsx
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 <Dialog>
   <DialogTrigger asChild>
@@ -77,25 +95,33 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
       <Button type="submit">Save</Button>
     </DialogFooter>
   </DialogContent>
-</Dialog>
+</Dialog>;
 ```
 
 ## Forms with React Hook Form + Zod
 
 ```tsx
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
   email: z.string().email(),
-})
+});
 
 export function ProfileForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -104,10 +130,10 @@ export function ProfileForm() {
       username: "",
       email: "",
     },
-  })
+  });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+    console.log(values);
   }
 
   return (
@@ -130,7 +156,7 @@ export function ProfileForm() {
         <Button type="submit">Submit</Button>
       </form>
     </Form>
-  )
+  );
 }
 ```
 
@@ -179,16 +205,107 @@ const columns: ColumnDef<User>[] = [
 }
 ```
 
+## Composing Components on Top of shadcn
+
+Instead of modifying shadcn components, compose your components on top of them while following shadcn's architecture guidelines for compatibility with tools like [tweakcn.com](https://tweakcn.com/).
+
+### Composition Pattern
+
+```tsx
+// ✅ Good - Compose on top of shadcn components
+// features/dashboard/components/metric-card.tsx
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
+export function MetricCard({
+  title,
+  value,
+  className,
+}: {
+  title: string;
+  value: string;
+  className?: string;
+}) {
+  return (
+    <Card className={cn("", className)}>
+      <CardHeader className="pb-2">
+        <CardTitle className="text-sm font-medium text-muted-foreground">
+          {title}
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className="text-2xl font-bold">{value}</p>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+### Standalone Components with shadcn Architecture
+
+For components that don't use shadcn primitives, follow shadcn's styling patterns:
+
+```tsx
+// ✅ Good - Follows shadcn architecture (CSS variables, cn utility)
+// features/dashboard/components/stat-badge.tsx
+import { cn } from "@/lib/utils";
+
+export function StatBadge({
+  label,
+  value,
+  variant = "default",
+  className,
+}: {
+  label: string;
+  value: string;
+  variant?: "default" | "success" | "warning";
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors",
+        "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+        {
+          "border-border bg-background text-foreground": variant === "default",
+          "border-green-500/50 bg-green-500/10 text-green-700 dark:text-green-400":
+            variant === "success",
+          "border-yellow-500/50 bg-yellow-500/10 text-yellow-700 dark:text-yellow-400":
+            variant === "warning",
+        },
+        className
+      )}
+    >
+      <span className="text-muted-foreground mr-1">{label}:</span>
+      <span>{value}</span>
+    </div>
+  );
+}
+```
+
+### Key Composition Principles
+
+1. **Compose, Don't Modify** - Build on top of shadcn components, never edit `components/ui/` files
+2. **Follow shadcn Patterns** - Use `cn()` utility, CSS variables, and same styling conventions
+3. **Preserve Compatibility** - Keep `components/ui/` pristine for tools like [tweakcn.com](https://tweakcn.com/)
+4. **Use Theme Variables** - Always use Tailwind CSS variables (`bg-background`, `text-foreground`, `border-border`, etc.)
+5. **Place in Features** - Custom components belong in `features/{feature}/components/`, not `components/ui/`
+
 ## Best Practices
 
 1. **Copy, Don't Import** - Components live in your codebase, customize freely
 2. **Use the CLI** - `npx shadcn@latest add` for new components
-3. **Extend, Don't Override** - Add variants instead of changing defaults
-4. **Accessibility First** - Built on Radix, maintains a11y out of box
-5. **Consistent Styling** - Use CSS variables for theming
+3. **Compose, Don't Modify** - Build components on top of shadcn primitives, never edit `components/ui/` files directly
+4. **Follow shadcn Architecture** - Use `cn()` utility, CSS variables, same styling patterns, and component structure conventions
+5. **Extend via Composition** - Create wrapper/composite components that use shadcn components as building blocks
+6. **Accessibility First** - Built on Radix, maintains a11y out of box. When composing, preserve accessibility features
+7. **Consistent Styling** - Use CSS variables for theming to maintain compatibility with shadcn's theming system
+8. **Preserve `components/ui/` Pristine** - Keep `components/ui/` exclusively for shadcn components to maintain compatibility with ecosystem tools like [tweakcn.com](https://tweakcn.com/)
+9. **Feature-Based Components** - Place composed/custom components in `features/{feature}/components/` or shared `components/` (outside `ui/`)
+10. **Use Tailwind Theme Variables** - Always use Tailwind CSS variables (`bg-background`, `text-foreground`, `border-border`, `ring-ring`, etc.) instead of hardcoded colors
 
 ## Reference Documentation
 
 For component catalog and detailed docs, consult:
-- shadcn/ui Documentation: https://ui.shadcn.com/llms.txt
 
+- shadcn/ui Documentation: https://ui.shadcn.com/llms.txt

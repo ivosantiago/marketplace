@@ -6,19 +6,27 @@
   },
   "metadata": {
     "description": "Full-stack development skills for Next.js, TypeScript, Drizzle, Tailwind, shadcn/ui, Better Auth, and Vercel",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "plugins": [
     {
       "name": "ivosantiago-stack",
       "source": "./plugins/ivosantiago-stack",
       "description": "Complete full-stack development toolkit with 10 specialized skills for Next.js, TypeScript, Drizzle ORM, Tailwind CSS, shadcn/ui, Better Auth, architecture patterns, security, and Vercel deployment",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "ivosantiago"
       },
-      "tags": ["nextjs", "typescript", "drizzle", "tailwind", "shadcn", "better-auth", "vercel", "full-stack"]
+      "tags": [
+        "nextjs",
+        "typescript",
+        "drizzle",
+        "tailwind",
+        "shadcn",
+        "better-auth",
+        "vercel",
+        "full-stack"
+      ]
     }
   ]
 }
-
