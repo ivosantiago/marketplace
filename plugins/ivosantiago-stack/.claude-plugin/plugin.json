@@ -1,0 +1,9 @@
+{
+  "name": "ivosantiago-stack",
+  "description": "Complete full-stack development toolkit with 10 specialized skills for Next.js, TypeScript, Drizzle ORM, Tailwind CSS, shadcn/ui, Better Auth, architecture patterns, security, and Vercel deployment",
+  "version": "1.0.0",
+  "author": {
+    "name": "ivosantiago"
+  }
+}
+
