@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Full-stack development skills for Next.js, TypeScript, Drizzle, Tailwind, shadcn/ui, Better Auth, and Vercel",
-    "version": "1.0.1"
+    "version": "1.1.0"
   },
   "plugins": [
     {
@@ -26,6 +26,26 @@
         "better-auth",
         "vercel",
         "full-stack"
+      ]
+    },
+    {
+      "name": "matt-pocock-workflow",
+      "source": "./plugins/matt-pocock-workflow",
+      "description": "Matt Pocock's Claude Code workflow methodologies including multi-phase planning, context preservation, and the Ralph Wiggum PRD-loop approach for autonomous agents",
+      "version": "1.1.0",
+      "author": {
+        "name": "Matt Pocock"
+      },
+      "tags": [
+        "workflow",
+        "planning",
+        "claude-code",
+        "productivity",
+        "github",
+        "changesets",
+        "ralph",
+        "agents",
+        "prd"
       ]
     }
   ]
