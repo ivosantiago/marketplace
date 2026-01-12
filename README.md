@@ -1,6 +1,6 @@
 # ivosantiago's Plugin Marketplace
 
-A Claude Code plugin marketplace with full-stack development skills for modern web applications.
+A Claude Code plugin marketplace with full-stack development skills and AI workflow methodologies.
 
 ## Quick Install
 
@@ -44,6 +44,39 @@ Complete full-stack development toolkit with 10 specialized skills:
 
 **Slash Command**: `/ivosantiago-stack` — Invoke all skills at once
 
+---
+
+### matt-pocock-workflow
+
+Matt Pocock's Claude Code workflow methodologies for efficient AI-assisted development. Based on his YouTube tutorials.
+
+| Skill                  | Description                                                      |
+| ---------------------- | ---------------------------------------------------------------- |
+| `matt-pocock-planning` | Multi-phase planning, context preservation, GitHub CLI workflows |
+| `matt-pocock-ralph`    | The Ralph Wiggum PRD-loop approach for autonomous agents         |
+
+**Slash Command**: `/matt-workflow` — Activate Matt's workflow methodology
+
+#### Core Rules
+
+- **Extreme concision** — Sacrifice grammar for brevity in all interactions
+- **GitHub CLI first** — Use `gh` as primary GitHub interface
+- **Branch naming** — Prefix branches with username (e.g., `matt/feature`)
+- **PR TODOs** — Use checkbox markdown: `- [ ] Task description`
+- **Changesets** — Write to `.changeset/0000-your-change.md`
+- **Tag Claude** — Use `@claude` in GitHub issues
+
+#### Workflow Approaches
+
+| Approach           | Use Case                        | Key File        |
+| ------------------ | ------------------------------- | --------------- |
+| Multi-phase plans  | Features spanning context windows | GitHub issues   |
+| Ralph Wiggum (PRD) | Autonomous overnight agents     | `prd.json` loop |
+
+**References**:
+- [Claude Code Workflow](https://www.youtube.com/watch?v=kZ-zzHVUrO4)
+- [Ralph Wiggum Approach](https://www.youtube.com/watch?v=_IK18goX4X8)
+
 ## Installation
 
 ### Prerequisites
@@ -70,8 +103,9 @@ Complete full-stack development toolkit with 10 specialized skills:
 # In Claude Code, run:
 /plugin marketplace add ivosantiago/marketplace
 
-# Then install the plugin:
+# Install plugins:
 /plugin install ivosantiago-stack@ivosantiago-marketplace
+/plugin install matt-pocock-workflow@ivosantiago-marketplace
 ```
 
 ### From Local Clone
@@ -84,8 +118,9 @@ cd marketplace
 # Add the local marketplace
 /plugin marketplace add ./
 
-# Install the plugin
+# Install plugins
 /plugin install ivosantiago-stack@ivosantiago-marketplace
+/plugin install matt-pocock-workflow@ivosantiago-marketplace
 ```
 
 ### Verify Installation
@@ -94,7 +129,7 @@ cd marketplace
 /plugin list
 ```
 
-You should see `ivosantiago-stack@ivosantiago-marketplace` in the list.
+You should see both plugins in the list.
 
 ## Usage
 
@@ -157,22 +192,31 @@ These skills reference official LLM-friendly documentation:
 └── marketplace.json              # Marketplace catalog
 
 plugins/
-└── ivosantiago-stack/
+├── ivosantiago-stack/
+│   ├── .claude-plugin/
+│   │   └── plugin.json           # Plugin manifest
+│   ├── commands/
+│   │   └── ivosantiago-stack.md  # Slash command
+│   └── skills/
+│       ├── ivosantiago-architecture/
+│       ├── ivosantiago-better-auth/
+│       ├── ivosantiago-drizzle-postgres/
+│       ├── ivosantiago-nextjs-backend/
+│       ├── ivosantiago-nextjs-frontend/
+│       ├── ivosantiago-security/
+│       ├── ivosantiago-shadcn-ui/
+│       ├── ivosantiago-tailwind/
+│       ├── ivosantiago-typescript/
+│       └── ivosantiago-vercel/
+│
+└── matt-pocock-workflow/
     ├── .claude-plugin/
     │   └── plugin.json           # Plugin manifest
     ├── commands/
-    │   └── ivosantiago-stack.md  # Slash command
+    │   └── matt-workflow.md      # Slash command
     └── skills/
-        ├── ivosantiago-architecture/
-        ├── ivosantiago-better-auth/
-        ├── ivosantiago-drizzle-postgres/
-        ├── ivosantiago-nextjs-backend/
-        ├── ivosantiago-nextjs-frontend/
-        ├── ivosantiago-security/
-        ├── ivosantiago-shadcn-ui/
-        ├── ivosantiago-tailwind/
-        ├── ivosantiago-typescript/
-        └── ivosantiago-vercel/
+        ├── matt-pocock-planning/ # Multi-phase planning methodology
+        └── matt-pocock-ralph/    # Ralph Wiggum PRD-loop approach
 ```
 
 ## Updating
@@ -182,6 +226,7 @@ To get the latest version:
 ```
 /plugin marketplace update ivosantiago-marketplace
 /plugin update ivosantiago-stack@ivosantiago-marketplace
+/plugin update matt-pocock-workflow@ivosantiago-marketplace
 ```
 
 ## License
