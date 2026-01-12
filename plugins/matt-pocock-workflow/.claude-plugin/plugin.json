@@ -1,9 +1,5 @@
 {
   "name": "matt-pocock-workflow",
-  "version": "1.0.0",
   "description": "Matt Pocock's Claude Code workflow methodologies for efficient AI-assisted development with extreme concision, multi-phase planning, context preservation, and the Ralph Wiggum approach.",
-  "author": "Matt Pocock",
-  "homepage": "https://www.youtube.com/watch?v=kZ-zzHVUrO4",
-  "skills": ["matt-pocock-planning", "matt-pocock-ralph"],
-  "commands": ["matt-workflow"]
+  "version": "1.0.0"
 }

@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Full-stack development skills for Next.js, TypeScript, Drizzle, Tailwind, shadcn/ui, Better Auth, and Vercel",
-    "version": "1.1.0"
+    "version": "1.0.0"
   },
   "plugins": [
     {
       "name": "ivosantiago-stack",
       "source": "./plugins/ivosantiago-stack",
       "description": "Complete full-stack development toolkit with 10 specialized skills for Next.js, TypeScript, Drizzle ORM, Tailwind CSS, shadcn/ui, Better Auth, architecture patterns, security, and Vercel deployment",
-      "version": "1.0.1",
+      "version": "1.0.0",
       "author": {
         "name": "ivosantiago"
       },
@@ -32,9 +32,9 @@
       "name": "matt-pocock-workflow",
       "source": "./plugins/matt-pocock-workflow",
       "description": "Matt Pocock's Claude Code workflow methodologies including multi-phase planning, context preservation, and the Ralph Wiggum PRD-loop approach for autonomous agents",
-      "version": "1.1.0",
+      "version": "1.0.0",
       "author": {
-        "name": "Matt Pocock"
+        "name": "ivosantiago"
       },
       "tags": [
         "workflow",
